@@ -114,7 +114,8 @@ App = {
     const content = $('#newTask').val()
     const url = content.split("/")
     let qName = url[4];
-    await App.todoList.createTask(qName + "   |   " + content)
+    q = qName.replace(/-/i, ' ')
+    await App.todoList.createTask(q + "   |   " + content)
     window.location.reload()    // refersh page to show new task added
   },
 

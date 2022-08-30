@@ -6,44 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Code</title>
 
+    <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+
     <style>
         main {
-            margin-top: 60px;
+            margin-top: 100px;
         }
+
         body {
-            background: #4d244e;
-            font-family: sans-serif;
-            color: #aa8e8d;
-            border-top: 5px solid #aa8e8d;
+          /*background: #4d244e;*/
+          background-image: url(images/22.jpg);
+          background-size: 100% 135%;
+          font-family: sans-serif;
+          color: #aa8e8d;
+          border-top: 5px solid #aa8e8d;
+          /*background-image: linear-gradient(to left, #753c76, #4d244e);*/
         }
 
         h1 {
-            color: #aa8e8d;
-            text-align: center;
-            font-size: 32px;
-            font-weight: 900;
+          color: #aa8e8d;
+          text-align: center;
+          font-family: 'Corben', Georgia, Times, serif;
+          font-size: 25px;
+          font-weight: 100;
         }
+
+        h3 {
+          color: #aa8e8d;
+          font-family: 'Corben', Georgia, Times, serif;
+          font-size: 15px;
+          font-weight: 100;
+        }
+
         #content {
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 15px;
+          font-weight: 800;
           display: none;
         }
 
         form {
-            width: 350px;
-            margin: auto;
-            width: 100%;
-            border: 2px solid #aa8e8d;
-            padding: 10px;       
+          width: 350px;
+          margin: auto;
+          width: 100%;
+          border: 2px solid #aa8e8d;
+          border-radius: 5px;
+          padding: 10px;       
         }
 
         ul {
-            color: #aa8e8d;
-            margin-bottom: 0px;
+          color: #aa8e8d;
+          margin-bottom: 0px;
         }
 
         #completedTaskList.content {
-            background: #aa8e8d;
-            color: #4d244e;
-            text-decoration: line-through;
+          background: #aa8e8d;
+          color: #4d244e;
+          text-decoration: line-through;
         }
 
         .container-fluid {
@@ -53,57 +73,110 @@
 
         label {
           background: #aa8e8d;
-          height: 50px;
-          width: 101%;
+          height: 45px;
+          width: 97%;
           display: flex;
           align-items: center;
           border-bottom: 1px solid #4d244e;
           color: #4d244e;
+          opacity: 0.8;
           position: relative;
           padding: 5px;
-          box-sizing: border-box;
+          /* box-sizing: border-box;*/
           border-radius: 5px;
+          box-shadow: inset 0 0 0 0 #4d244e;
+          transition: color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+
+        label:hover {
+          box-shadow: inset 0 0 0 700px #4d244e;
+          background-color: #4d244e;
+          color: #aa8e8d;
+          cursor:crosshair;
         }
 
         .text-center {
           text-align: center;
         }
 
-        label:hover {
-          background-color: #4d244e;
-          color: #aa8e8d;
+        #loader {
+          border: 10px solid #4d244e;
+          border-top: 10px solid #aa8e8d;
+          border-bottom: 10px solid #aa8e8d;
+          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          animation: spin 2s linear infinite;
         }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .center {
+          position: absolute;
+          left: 45%;
+          right: 55%;
+          height: 50%;
+          transform: translate(-40%, -60%);
+        }
+
+        p, div {
+          font-family: 'Nobile', Helvetica, Arial, sans-serif;
+        }
+
+        a {
+          color: inherit;
+        }
+
+        #navbar {
+          list-style-type: none;
+          margin: 0%;
+          padding: 0%;
+          background-color: #4d244e;
+          border-radius: 5px;
+          line-height: 30px;
+          overflow: hidden;
+          border: 2px solid #aa8e8d;
+          border-radius: 50px;
+          border-bottom: 2px;
+          text-align: left;
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 20px;
+          font-weight: 800;
+        }
+
     </style>
 </head>
 <body>    
     <div class="container-fluid">
-        <h1>Smart Code</h1>
-        <div class="row">
-          <main role="main" class="col-lg-12 d-flex justify-content-center">
-            <div id="loader" class="text-center">
-              <p class = "text-center">Loading...</p>
-            </div>
-            <div id="content">
-              <form onSubmit="App.createTask(); return false;">
-                <input size = "114px" id="newTask" type="text" placeholder="Add Question" required>
-                <input type="submit" hidden="">
-              </form>                            
-              <ul id="taskList" class="list-unstyled">    
-                <h3><u>Questions</u></h3>            
-                <div class="taskTemplate" style="display: none">
-                  <label>
-                    <input type="checkbox" />                  
-                    <span class="content">Question...</span>
-                  </label>
-                </div>
-              </ul>
-              <ul id="completedTaskList" class="list-unstyled">
-                <h3><u>Completed</u></h3>
-              </ul>
-            </div>
-          </main>
-        </div>
-      </div>
+        <ul id="navbar">
+          <l1>&nbsp;&nbsp;<a href="http://localhost:3000/">Home</a>&nbsp;&nbsp;</l1>
+        </ul>
+        <h1><a href="http://localhost:3000/">Smart Code</a></h1>
+        <main role="main">
+          <div id="loader" class="center"></div>
+          <div id="content">
+            <form onSubmit="App.createTask(); return false;">
+              <input size = "114px" id="newTask" type="text" placeholder="Add Question" required>
+              <input type="submit" hidden="">
+            </form>                            
+            <ul id="taskList">    
+              <h3><u>Questions</u></h3>            
+              <div class="taskTemplate" style="display: none">
+                <label>             
+                  <input type="checkbox" id="chk">   
+                  <span class="content">Question...</span>
+                </label>
+              </div>
+            </ul>
+            <ul id="completedTaskList">
+              <h3><u>Completed</u></h3>
+            </ul>
+          </div>
+        </main>
+    </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

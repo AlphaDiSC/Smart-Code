@@ -24,7 +24,7 @@ contract TodoList {
     );
 
     constructor() public {
-        createTask("two-sum     |       https://leetcode.com/problems/two-sum/");
+        createTask("two sum     |       https://leetcode.com/problems/two-sum/");
     }
 
     function createTask(string memory _task) public {
